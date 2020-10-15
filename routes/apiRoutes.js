@@ -39,19 +39,9 @@ module.exports = function(app) {
   // In each of the below cases when a user visits a link
   // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
   // ---------------------------------------------------------------------------
-
   app.get("/api/notes/", function(req,res){
-    return res.json(unreadRequest);
-})
-
-
-  app.get("/api/request/:uuid", function(req,res){
-    var uuid = req.params.uuid ;
-     console.log(uuid)
-    let obj = unreadRequest.find(obj => obj.uuid == uuid);
-    res.json(obj)
-});
-
+    return res.json(notes);
+}) ; 
 
   // API POST Requests
   // Below code handles when a user submits a form and thus submits data to the server.
@@ -60,14 +50,11 @@ module.exports = function(app) {
   // (ex. User fills out a reservation request... this data is then sent to the server...
   // Then the server saves the data to the tableData array)
   // ---------------------------------------------------------------------------
-  app.post("/api/submit", function (req, res) {
-    var newRequest = req.body;
-
-    newRequest.uuid = uuid.v4()
-    newRequest.timestamp = dayjs().format();
-    unreadRequest.push(newRequest);
-
-    res.json(newRequest);
+  app.post("/api/notes", function (req, res) {
+    var addNote = req.body;
+    //addNote.uuid = uuid.v4()
+    //addNote.timestamp = dayjs().format();
+    res.json(addNote);
     //console.log(newRequest);
     //fs.writeFile("data/unreadRequest.json", JSON.stringify(unreadRequest))
     //writeFileAsync("data/unreadRequest.json", JSON.stringify(unreadRequest))
