@@ -34,11 +34,15 @@ module.exports = function(app) {
     });
 });
 
+
 // API DELETE NOTE
 // ---------------------------------------------------------------------------
 app.delete("/api/notes/:uuid", function(req,res){
-    var uuid = req.param.uuid
-    res.json()
+  var uuid = req.params.uuid ;
+  console.log(`Deleting Note : ${uuid}`)
+  let obj = notes.find(obj => obj.uuid == uuid);
+  res.json(obj)
+
 })
 
 }
