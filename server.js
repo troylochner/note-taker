@@ -3,16 +3,6 @@
 // ===========================================================
 var express = require("express");
 var path = require("path");
-//var uuid = require("uuid");
-
-
-
-
-//DATE TIME FORMATTER
-/*
-var dayjs = require('dayjs')
-//import dayjs from 'dayjs' // ES 2015
-dayjs().format()*/
 
 // ==============================================================================
 // EXPRESS CONFIGURATION
@@ -27,7 +17,7 @@ var PORT = process.env.PORT || 3000;
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+app.use("/assets", express.static("./public/assets"));
 
 // ================================================================================
 // ROUTER
@@ -37,10 +27,7 @@ app.use(express.json());
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-// ================================================================================
-//SETUP WRITE FILE OPTIONS
-//const writeFileAsync = util.promisify(fs.writeFile);
-// ================================================================================
+
 
 // =============================================================================
 // LISTENER

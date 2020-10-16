@@ -5,6 +5,9 @@ const fs = require("fs");
 const util = require("util");
 const uuid = require("uuid");
 const dayjs = require("dayjs");
+
+//var notes = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
+
 var notes = require("../db/db.json");
 
 // ===============================================================================
@@ -14,9 +17,10 @@ module.exports = function(app) {
   
 // API GET NOTES
 // ---------------------------------------------------------------------------
-  app.get("/api/notes/", function(req,res){
+
+app.get("/api/notes", function(req,res){
     res.json(notes);
-}) ; 
+}) ;
 
 // API POST NOTE
 // ---------------------------------------------------------------------------
