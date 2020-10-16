@@ -28,7 +28,7 @@ app.get("/api/notes", function(req,res){
     var addNote = req.body;
     
     //ADDING UUID + TIMESTAMP TO EACH NOTE
-    addNote.uuid = uuid.v4()
+    addNote.id = uuid.v4()
     addNote.timestamp = dayjs().format();
 
     //ADD TO THE NOTE ARRAY
@@ -44,14 +44,14 @@ app.get("/api/notes", function(req,res){
 
 // API DELETE NOTE
 // ---------------------------------------------------------------------------
-app.delete("/api/notes/:uuid", function(req,res){
-  var uuid = req.params.uuid ;
-  console.log(`Deleting Note : ${uuid}`);
+app.delete("/api/notes/:id", function(req,res){
+  var id = req.params.id ;
+  console.log(`Deleting Note : ${id}`);
   
-  const removedNote = notes.find(removedNote => removedNote.uuid == uuid);
+  const removedNote = notes.find(removedNote => removedNote.id == id);
   
 //REMOVE THE NOTE FROM ARRAY
-  const updatedNotes = notes.filter(notes => notes.uuid != uuid);
+  const updatedNotes = notes.filter(notes => notes.id != id);
 
 //WRITE THE UPDATED NOTES TO OUR FILE
 
