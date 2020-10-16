@@ -3,6 +3,7 @@
 
 https://img.shields.io/badge/Created%20by-Troy%20Lochner%20--%202020-critical
 
+
 # Usage :
 Open the URL provided below.
 1. Give the note a title.
